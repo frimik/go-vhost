@@ -136,9 +136,9 @@ func (m *VhostMuxer) handle(conn net.Conn) {
 		m.sendError(conn, BadRequest{fmt.Errorf("Failed to extract vhost name: %v", err)})
 		return
 	}
-
 	// normalize the name
 	host := normalize(vconn.Host())
+	host = strings.Split(host, ".")[0]
 
 	// look up the correct listener
 	l, ok := m.get(host)
