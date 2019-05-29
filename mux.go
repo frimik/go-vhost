@@ -138,7 +138,6 @@ func (m *VhostMuxer) handle(conn net.Conn) {
 	}
 	// normalize the name
 	host := normalize(vconn.Host())
-	host = strings.Split(host, ".")[0]
 
 	// look up the correct listener
 	l, ok := m.get(host)
